@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  
+  if user
+    h2 Hey #{user.first}
+    p
+      a(href="/logout") Logout
+  else
+    p
+      a(href="/auth/linkedin") Login
+  if profile
+    div(class="jumbotron text-center col-md-6 col-md-offset-3")
+      img(src=profile.pictureUrl)
+      p= user.displayName
+    
